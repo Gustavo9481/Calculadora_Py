@@ -17,6 +17,7 @@ FOREGROUND = "#212529"    # font color, screens and buttons
 BACKGROUND = "#dee2e6"    # window color
 BUTTONS = "#ced4da"       # Buttons color
 
+
 root = Tk()
 
 
