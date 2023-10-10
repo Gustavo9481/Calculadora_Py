@@ -36,13 +36,25 @@ class Calculadora:
         # Display equation
         # Display para mostrar la ecuación
         self.equation = Entry(window)
-        self.equation.config(bd=0, width=26, font=("JetBrains", 15), fg=FOREGROUND, bg=BACKGROUND, justify="right")
+        self.equation.config(
+                bd=0, 
+                width=26, 
+                font=("JetBrains", 15), 
+                fg=FOREGROUND, 
+                bg=BACKGROUND, 
+                justify="right")
         self.equation.grid(row=0, column=0, columnspan=4, padx=3, pady=1)
 
         # Display result
         # Display para mostrar el resultado
         self.result = Entry(window)
-        self.result.config(bd=0, width=16, font=("JetBrains", 24), fg=FOREGROUND, bg=BACKGROUND, justify="right")
+        self.result.config(
+                bd=0, 
+                width=16, 
+                font=("JetBrains", 24), 
+                fg=FOREGROUND, 
+                bg=BACKGROUND, 
+                justify="right")
         self.result.grid(row=1, column=0, columnspan=4, padx=3, pady=1)
 
         # Color interface

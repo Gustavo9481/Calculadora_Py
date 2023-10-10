@@ -1,11 +1,11 @@
-from tkinter import *
-from tkinter import messagebox as mss
-import re
 
 ''' modulo contenedor de las funciones segun el botón de forma individual '''
 
-# ! función por reparar
-# => tareas pendientes al final del archivo
+from tkinter import *
+from tkinter import messagebox as mss
+import re
+import pytest
+
 
 # Global Variables -----------------------------------------------------
 operation = ""                      # armado de ecuación
@@ -52,21 +52,29 @@ def operators(self, value):
 
     global count_total, count_point, operation
 
-    operation += value
+    map = {"×": "*", 
+           "÷": "/" }
+    
+    if value in map:
+        operation += map[value]
+    else:
+        operation += value
+
     delete_all(self)
     self.equation.insert(0, operation)
-    if value == "×":
-        operation = re.sub("×", "*", operation) # !
-        # caracter substitution = compatibility with eval()
-    elif value == "÷":
-        operation = re.sub("÷", "/", operation) # !
-        # caracter substitution = compatibility with eval()
-    else:
-        pass 
     count_total = 0
     count_point = 0
+
     # ! TEST => print(operation)
     # ! operation debe mostrar los operadores correctos * /
+    
+    @pytest.fixture
+    def test_operators():
+        global operation
+    
+        assert operators(self,"×") == "*"
+        assert operators("÷") == "/"
+        
 
 
 # press => Total (egual =) --------------------------------------------- 
