@@ -119,9 +119,11 @@ def delete_C(self, value):
 # press => ← (borrar último caracter) ----------------------------------
 def delete_last(self, value):
     # borra el último caracter introducido
+    global operation
 
     self.result.delete(len(self.result.get())-1, END)
-    
+    operation = operation[:-1]
+
 
 
 # press => ( ) (paréntesis) --------------------------------------------

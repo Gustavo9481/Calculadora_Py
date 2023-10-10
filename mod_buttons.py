@@ -1,27 +1,32 @@
+""" ----- MOD_BUTTONS ----- """
+
+""" Button builder module and interface color setting
+The grid that is built is 5 rows x 4 columns """
+
+""" Módulo creador de botones y establecimiento de colores de interfaz
+El grid que se construye es de 5 rows x 4 columns """
+
+
 from tkinter import *
 from tkinter import messagebox as mss
+from typing import List
 from mod_press import *
 from mod_functions import *
 import re
 
-''' button's creator module
-rows 0 and 1 => Entrys for equation and Result
-@param rows_buttons => row's number to make
-'''
-''' módulo creador de botones para calculadora
-en las filas 0 y 1 del grid se encuentran los entry: ecuación y resultado
-@param rows_buttons => número de filas que se quieren elaborar acompañadas 
-de cuatro columnas
-'''
 
+# Variables globales de color -----------------------------------------
 
-font_color = ""     # color para la fuente de la interfaz
-bg_color = ""       # color de fondo de la ventana
-button_color = ""   # Color para los botones
+font_color : str = ""     # color para la fuente de la interfaz
+bg_color : str = ""       # color de fondo de la ventana
+button_color : str = ""   # Color para los botones
 
 
 # Interface Colors ----------------------------------------------------- 
-def colors(self, font_color_value, bg_color_value, button_color_value):
+def colors(self, 
+           font_color_value : str, 
+           bg_color_value : str, 
+           button_color_value : str):
     # Implementa los colores para la interfaz
     # valores hexadecimales se definen en archivo main (calculator.py)
     global font_color
@@ -34,7 +39,9 @@ def colors(self, font_color_value, bg_color_value, button_color_value):
     
 
 # Grid Maker -----------------------------------------------------------
-def mk_grid_buttons(self, buttons, rows_buttons):
+def mk_grid_buttons(self, 
+                    buttons : List, 
+                    rows_buttons : int):
     # Genera grid de la botonera
     # buttons => almacen de botones (botones - calculator.py)
     # rows_buttons => número de filas que se desean construir (5) 
@@ -47,7 +54,8 @@ def mk_grid_buttons(self, buttons, rows_buttons):
 
 
 # Button Maker ---------------------------------------------------------
-def mk_button(self, value):
+def mk_button(self, 
+              value : str):
     # Genera instancias (botones)
     # establece la configuración de cada botón
     # función press() => modulo_funciones_calculadora (mod_functions.py)

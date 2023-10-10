@@ -1,21 +1,24 @@
+""" ----- CALCULATOR - MAIN ----- """
+
+""" App Calculadora Simple
+Detalles de la estructura de las funciones en archivo README.md """
+
+
 from tkinter import *
 from tkinter import messagebox as mss
+from typing import List, Tuple, Dict
 from mod_buttons import *
 from mod_functions import *
 from mod_press import *
 import re
 
-'''
-App Calculadora Simple
-Detalles de la estructura de las funciones en archivo README.md
-'''
 
 
 # Interface Colors -----------------------------------------------------
 
-FOREGROUND = "#212529"    # font color, screens and buttons
-BACKGROUND = "#dee2e6"    # window color
-BUTTONS = "#ced4da"       # Buttons color
+FOREGROUND : str = "#212529"    # font color, screens and buttons
+BACKGROUND : str = "#dee2e6"    # window color
+BUTTONS : str = "#ced4da"       # Buttons color
 
 
 root = Tk()
