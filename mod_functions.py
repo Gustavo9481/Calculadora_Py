@@ -2,6 +2,23 @@
 MODULO DE FUNCIONES
 
 Módulo contenedor de las funciones segun el botón de forma individual
+
+Contenido:
+    * Variables Globales
+
+Sub Funciones:
+    * delete_all()
+    * update_globals()
+    * enter_parentesis()
+
+Funciones:
+    * operators():      Función para botones de operadores
+    * total_result():   Función de botón de Resultado
+    * delete_C():       Borrar Todo - Botón C
+    * delete_last():    Borrar último caracter - Botón ←
+    * parentesis():     Ingresar Paréntesis ( )
+    * percent():        Cálculo de Porcentaje %
+    * number_point():   Ingreso de Números
 """
 
 from tkinter import *
@@ -11,15 +28,14 @@ import re
 
 # ----------------------------------------------------------- Variables Globales
 
-operation = ""                      # armado de ecuación
-count_total = 0                     # veces presionado botón '='
-count_point = operation.count(".")  # puntos ingresados en la ecuación
+operation: str = ""                      # armado de ecuación
+count_total: int = 0                     # veces presionado botón '='
+count_point = operation.count(".")       # puntos ingresados en la ecuación
 
 
 
 # ---------------------------------------------------------------- Sub Funciones
 def delete_all(self):
-    # delete all content from both entrys
     # borra el contenido de ambas pantallas
 
     self.equation.delete(0, END)
@@ -27,7 +43,6 @@ def delete_all(self):
 
 
 def update_globals(self):
-    # reset variables
     # resetea las variables globales
 
     global count_total, count_point, operation
@@ -37,8 +52,10 @@ def update_globals(self):
     count_point = 0
 
 
-def enter_parentesis(self, par):
+def enter_parentesis(self, par: str):
     # inserta el parentesis correspondiente
+    # Parámetros:
+        # par (str):   parentesis correspondiente
 
     global operation
     
@@ -47,10 +64,10 @@ def enter_parentesis(self, par):
     
 
 # ------------------------------------------- Función para botones de Operadores
-def operators(self, value):
-    # action to press an operator
-    # acción al presionar cualquier operador
-    # operators: + , - , × , ÷  
+def operators(self, value: str):
+    # acción al presionar cualquier operador [ + , - , × , ÷ ]
+    # Parámetros:
+        # value (str):   operador del botón
 
     global count_total, count_point, operation
 
@@ -72,9 +89,13 @@ def operators(self, value):
     
 
 # ---------------------------------------------- Función para botón de Resultado 
-def total_result(self, value):
-    # evalúa la ecuación en operation
-    # muestra el resultado en la pantalla result
+def total_result(self, value: str):
+    # evalúa la ecuación en operation y muestra el resultado en pantalla result
+    # Maneja las excepciones:
+        # ZeroDivisionError:   división entre 0
+        # SyntaxError:         ecuación mal escrita
+    # Parámetros:
+        # value (str):         operador de botón '='
 
     global count_total, count_point, operation
 
@@ -107,8 +128,9 @@ def total_result(self, value):
 
 # -------------------------------------------------------- Borrar Todo - Botón C
 def delete_C(self, value):
-    # borra todo el contenido de ambas pantallas
-    # reinicia las variables globales
+    # Borra todo el contenido de ambas pantallas - reinicia variables globales
+    # Parámetros:
+        # value (str):   valor botón 'C'
 
     global count_total, count_point, operation
     
@@ -122,7 +144,10 @@ def delete_C(self, value):
 
 # --------------------------------------------- Borrar último caracter - Botón ←
 def delete_last(self, value):
-    # borra el último caracter introducido
+    # Borra el último caracter introducido
+    # Parámetros:
+        # value (str):   valor botón '←' 
+
     global operation
 
     self.result.delete(len(self.result.get())-1, END)
@@ -131,8 +156,10 @@ def delete_last(self, value):
 
 # ------------------------------------------------------ Ingresar Paréntesis ( )
 def parentesis(self, value):
-    # ingresa parentesis en la eciación
-    # si ya existe un parentesis, escribe el cierre 
+    # ingresa parentesis en la ecuación
+    # si ya existe un parentesis, escribe el cierre
+    # Parámetros:
+        # value (str):  valor botón '( )'
 
     global count_total, count_point, operation
 
@@ -147,12 +174,13 @@ def parentesis(self, value):
 
 # ------------------------------------------------------ Cálculo de Porcentaje %
 def percent(self, value):
-    # calcula porcentaje
+    # calcula porcentaje - anexa a operación la cadena '/100'
+    # Parámetros:
+        # value (str):  valor botón '%'
 
     global count_total, count_point, operation
 
     operation = operation + "/100"
-    print(operation)
     delete_all(self)
     self.result.insert(END, eval(operation))
     operation = self.result.get()
@@ -160,7 +188,9 @@ def percent(self, value):
     
 # ----------------------------------------------------------- Ingreso de Números
 def number_point(self, value):
-    # inserta números y punto a pantalla y operation
+    # inserta números y punto '.' a pantalla y a la variable operation
+    # Parámetros:
+        # value (str):  valor del botón, numérico o punto '.'
 
     global count_total, count_point, operation
 

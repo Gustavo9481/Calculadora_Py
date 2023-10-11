@@ -1,7 +1,7 @@
 """ 
 MODULO PRESIONAR BOTÓN
 
-Contiene la función encargada de determinar que función
+Contiene la función press() encargada de determinar que función
 se debe aplicar según el botón presionado 
 """
 
@@ -15,9 +15,9 @@ import re
 # --------------------------------------- Función General para Presionar Botones 
 def press(self,
           value : str) -> str:
-    # Función que determina que función debe ejecutarse según el botón 
-    # que sea presionado
-    # recibe como parámetro el valor del botón (value)
+    # Función que determina que función debe ejecutarse según el botón presionado
+    # Parámetros: 
+       # value (str):   valor o símbolo del botón
 
     function_map = {
             "+": operators,      # suma

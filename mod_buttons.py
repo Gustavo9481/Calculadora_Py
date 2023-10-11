@@ -1,13 +1,17 @@
 """ 
 MODULO DE BOTONES
 
- Button builder module and interface color setting
-The grid that is built is 5 rows x 4 columns
-
 Módulo creador de botones y establecimiento de colores de interfaz
-El grid que se construye es de 5 rows x 4 columns 
-"""
+El grid que se construye es de 5 rows x 4 columns
 
+Contenido:
+    * Variables Globales de Color
+
+Funciones:
+    * colors(): Colores de Interfaz 
+    * mk_grid_buttons(): Creador de Grid para botones
+    * mk_button(): Creador de Botones individuales
+"""
 
 from tkinter import *
 from tkinter import messagebox as mss
@@ -29,9 +33,14 @@ button_color : str = ""   # Color para los botones
 def colors(self, 
            font_color_value : str, 
            bg_color_value : str, 
-           button_color_value : str):
+           button_color_value : str) -> str:
     # Implementa los colores para la interfaz
     # valores hexadecimales se definen en archivo main (calculator.py)
+    # Parámetros:
+       # font_color_value (str):   color para las fuentes
+       # bg_color_value (str):     color de fondo para la ventana
+       # button_color_value (str): color para los botones
+
     global font_color
     global bg_color
     global button_color
@@ -45,14 +54,17 @@ def colors(self,
 # ------------------------------------------------- Creador de Grid para botones
 def mk_grid_buttons(self, 
                     buttons : List, 
-                    rows_buttons : int):
-    # Genera grid de la botonera
-    # buttons => almacen de botones (botones - calculator.py)
-    # rows_buttons => número de filas que se desean construir (5) 
-    # grid de 5 filas x 4 columnas
+                    rows_buttons : int,
+                    columns_buttons : int):
+    # Genera grid de la botonera - grid de 5 filas x 4 columnas
+    # Parámetros:
+       # buttons (List):         almacen de botones (botones - calculator.py)
+       # rows_buttons (int):     número de filas que se desean construir
+       # columns_buttons (int):  número de columnas que se desean construir
+
     count = 0
     for Row in range(3, rows_buttons + 3):
-        for Column in range(4):
+        for Column in range(columns_buttons):
             buttons[count].grid(row=Row, column=Column, padx=1, pady=1)
             count += 1
 
@@ -61,9 +73,10 @@ def mk_grid_buttons(self,
 # ---------------------------------------------- Creador de Botones individuales
 def mk_button(self, 
               value : str):
-    # Genera instancias (botones)
-    # establece la configuración de cada botón
-    # función press() => modulo_funciones_calculadora (mod_functions.py)
+    # Genera instancias (botones) - establece la configuración de cada botón
+    # Parámetros:
+       # value (str):   valor o símbolo que tendrá el botón
+
     global font_color
     global bg_color
     global button_color

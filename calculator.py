@@ -6,7 +6,9 @@ Detalles de la estructura de las funciones en archivo README.md
 
 Contenido:
     * Variables Globales de Color
-    * Clase Calculadora: Generadora de interfaz
+
+Clases:
+    * Clase Calculadora(): Generadora de interfaz
 """
 
 from tkinter import *
@@ -31,15 +33,15 @@ root = Tk()
 class Calculadora:
     # Genera la ventana que albergará las pantallas y la botonera
     # Parámetros:
-        # window: frame contenedor
+        # window:             frame contenedor
     # Atributos:
-        # window: nombre contenedor + configuraciones
-        # equation: Entry - pantalla de ecuación + configuraciones
-        # result: Entry - pantalla de resultado + configuración
+        # window:             nombre contenedor + configuraciones
+        # equation:           Entry - pantalla de ecuación + configuraciones
+        # result:             Entry - pantalla de resultado + configuración
     # Funciones Aplicadas:
-        # colors(): colores de interfaz - mod_buttons
-        # mk_button(): Botones - mod_buttons
-        # mk_grid_buttons: Grid de botones - mod_buttons
+        # colors():           colores de interfaz - mod_buttons
+        # mk_button():        Botones - mod_buttons
+        # mk_grid_buttons:    Grid de botones - mod_buttons
         
     def __init__(self, window):
         self.window = window
@@ -101,7 +103,7 @@ class Calculadora:
                 btn_0, btn_Point, btn_DeleteLast, btn_Total]
 
         # creación de grid de botones
-        mk_grid_buttons(self, buttons, 5) 
+        mk_grid_buttons(self, buttons, 5, 4) 
        
 
 
