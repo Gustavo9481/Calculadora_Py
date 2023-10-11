@@ -1,10 +1,12 @@
-""" ----- MOD_BUTTONS ----- """
+""" 
+MODULO DE BOTONES
 
-""" Button builder module and interface color setting
-The grid that is built is 5 rows x 4 columns """
+ Button builder module and interface color setting
+The grid that is built is 5 rows x 4 columns
 
-""" Módulo creador de botones y establecimiento de colores de interfaz
-El grid que se construye es de 5 rows x 4 columns """
+Módulo creador de botones y establecimiento de colores de interfaz
+El grid que se construye es de 5 rows x 4 columns 
+"""
 
 
 from tkinter import *
@@ -15,14 +17,15 @@ from mod_functions import *
 import re
 
 
-# Variables globales de color -----------------------------------------
+# -------------------------------------------------- Variables Globales de Color
 
 font_color : str = ""     # color para la fuente de la interfaz
 bg_color : str = ""       # color de fondo de la ventana
 button_color : str = ""   # Color para los botones
 
 
-# Interface Colors ----------------------------------------------------- 
+
+# ---------------------------------------------------------- Colores de Interfaz
 def colors(self, 
            font_color_value : str, 
            bg_color_value : str, 
@@ -38,7 +41,8 @@ def colors(self,
     button_color = button_color_value
     
 
-# Grid Maker -----------------------------------------------------------
+
+# ------------------------------------------------- Creador de Grid para botones
 def mk_grid_buttons(self, 
                     buttons : List, 
                     rows_buttons : int):
@@ -53,7 +57,8 @@ def mk_grid_buttons(self,
             count += 1
 
 
-# Button Maker ---------------------------------------------------------
+
+# ---------------------------------------------- Creador de Botones individuales
 def mk_button(self, 
               value : str):
     # Genera instancias (botones)

@@ -1,20 +1,23 @@
+""" 
+MODULO DE FUNCIONES
 
-''' modulo contenedor de las funciones segun el botón de forma individual '''
+Módulo contenedor de las funciones segun el botón de forma individual
+"""
 
 from tkinter import *
 from tkinter import messagebox as mss
 import re
-import pytest
 
 
-# Global Variables -----------------------------------------------------
+# ----------------------------------------------------------- Variables Globales
+
 operation = ""                      # armado de ecuación
 count_total = 0                     # veces presionado botón '='
 count_point = operation.count(".")  # puntos ingresados en la ecuación
 
 
 
-# Sub Functions --------------------------------------------------------
+# ---------------------------------------------------------------- Sub Funciones
 def delete_all(self):
     # delete all content from both entrys
     # borra el contenido de ambas pantallas
@@ -43,8 +46,7 @@ def enter_parentesis(self, par):
     operation += par
     
 
-
-# press => operadores -------------------------------------------------
+# ------------------------------------------- Función para botones de Operadores
 def operators(self, value):
     # action to press an operator
     # acción al presionar cualquier operador
@@ -65,19 +67,11 @@ def operators(self, value):
     count_total = 0
     count_point = 0
 
-    # ! TEST => print(operation)
-    # ! operation debe mostrar los operadores correctos * /
+    # TEST => print(operation)
+    # operation debe mostrar los operadores correctos * /
     
-    @pytest.fixture
-    def test_operators():
-        global operation
-    
-        assert operators(self,"×") == "*"
-        assert operators("÷") == "/"
-        
 
-
-# press => Total (egual =) --------------------------------------------- 
+# ---------------------------------------------- Función para botón de Resultado 
 def total_result(self, value):
     # evalúa la ecuación en operation
     # muestra el resultado en la pantalla result
@@ -97,20 +91,21 @@ def total_result(self, value):
         else:
             pass
     except ZeroDivisionError:
-        mss.showinfo("Error", "La división no puede ser entre 0")
+        mss.showinfo("Error", 
+                     "La división no puede ser entre 0")
         delete_all(self)
-        update_globals()
+        update_globals(self)
 
     except SyntaxError:
-        mss.showinfo("Error", "La equación fue mal introducida\nVuelva a intentar una nueva ecuación")
+        mss.showinfo("Error", 
+                     "La equación fue mal introducida\nVuelva a intentar una nueva ecuación")
         delete_all(self)
         update_globals(self)
 
     count_point = 0
  
 
-
-# press => C (borrar todo) ---------------------------------------------
+# -------------------------------------------------------- Borrar Todo - Botón C
 def delete_C(self, value):
     # borra todo el contenido de ambas pantallas
     # reinicia las variables globales
@@ -119,12 +114,13 @@ def delete_C(self, value):
     
     delete_all(self)
     update_globals(self)
-    # ! TEST => print(f"operation = {operation} --- count_total = {count_total} --- count_point = {count_point}")
-    # ! las variables deben ser: operation="" count_total=0 count_point=0
+    # TEST => print(f"operation = {operation}")  
+    # TEST => print(f"count_total = {count_total}")  
+    # TEST => print(f"count_point = {count_point}")
+    # las variables deben ser: operation="" count_total=0 count_point=0
 
 
-
-# press => ← (borrar último caracter) ----------------------------------
+# --------------------------------------------- Borrar último caracter - Botón ←
 def delete_last(self, value):
     # borra el último caracter introducido
     global operation
@@ -133,8 +129,7 @@ def delete_last(self, value):
     operation = operation[:-1]
 
 
-
-# press => ( ) (paréntesis) --------------------------------------------
+# ------------------------------------------------------ Ingresar Paréntesis ( )
 def parentesis(self, value):
     # ingresa parentesis en la eciación
     # si ya existe un parentesis, escribe el cierre 
@@ -150,8 +145,7 @@ def parentesis(self, value):
         count_par = 0
     
 
-
-# press => % (porcentaje) ---------------------------------------------- 
+# ------------------------------------------------------ Cálculo de Porcentaje %
 def percent(self, value):
     # calcula porcentaje
 
@@ -164,8 +158,7 @@ def percent(self, value):
     operation = self.result.get()
         
     
-
-# press => números ( 1 al 0) -------------------------------------------
+# ----------------------------------------------------------- Ingreso de Números
 def number_point(self, value):
     # inserta números y punto a pantalla y operation
 
@@ -189,9 +182,4 @@ def number_point(self, value):
         self.result.insert(END, value)
         operation += value
     
-    # ! TEST => print(operation) # no debe imprimir nada
-    
-
-# TODO: Resumen del código    
-# TODO: Comentarios en inglés y español para las funciones o sectores
-# TODO: Arreglar -> después de presionar igual obteniendo un resultado, al presionar punto, debe agregarse el 0.
+    # TEST => print(operation) # no debe imprimir nada
