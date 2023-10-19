@@ -14,7 +14,7 @@ import re
 
 # --------------------------------------- Función General para Presionar Botones 
 def press(self,
-          value : str) -> str:
+          value : str):
     # Función que determina que función debe ejecutarse según el botón presionado
     # Parámetros: 
        # value (str):   valor o símbolo del botón
